@@ -5,7 +5,7 @@
 
 vector_t::vector_t()
 {
-	* elements_ = nullptr;
+	elements_ = nullptr;
 	size_ = 0;
 	capacity_ = 0;
 }
