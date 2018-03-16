@@ -1,3 +1,7 @@
+#include <algorithm>
+#include <cassert>
+
+#include "vector.hpp"
 
 vector_t::vector_t()
 {
