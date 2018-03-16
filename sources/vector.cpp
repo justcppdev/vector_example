@@ -39,7 +39,7 @@ vector_t & vector_t::operator =(vector_t const & other)
 
 bool vector_t::operator ==(vector_t const & other) const
 {
-	if (size_ = other.size_)
+	if (size_ == other.size_)
 	{
 		for (std::size_t i = 0; i < size_; i++)
 		{
