@@ -70,7 +70,6 @@ void vector_t::push_back(int value) {
     }
     delete[] elements_;
     elements_ = mas;
-
     elements_[size_] = value;
     size_++;
   } else {
