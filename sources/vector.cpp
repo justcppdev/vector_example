@@ -60,12 +60,12 @@ vector_t::~vector_t()
 
 std::size_t vector_t::size() const
 {
-	return 0;
+	return size_;
 }
 
 std::size_t vector_t::capacity() const
 {
-	return 0;
+	return capacity_;
 }
 
 void vector_t::push_back(int value)
