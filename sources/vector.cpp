@@ -154,7 +154,7 @@ int & vector_t::operator [](std::size_t index)
 
 int vector_t::operator [](std::size_t index) const
 {
-	return 0;
+	return elements_[0];
 }
 
 bool operator !=(vector_t const & lhs, vector_t const & rhs)
