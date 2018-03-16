@@ -37,6 +37,7 @@ bool vector_t::operator==(vector_t const& other) const {
     for (std::size_t i = 0; i < size_; i++) {
       if (this->elements_[i] != other.elements_[i]) {
         return false;
+	      break;
       }
     }
     return true;
@@ -68,16 +69,19 @@ void vector_t::push_back(int value) {
     elements_[0] = value;
   } else {
 	  if(size_ == capacity_) {
-    
-    capacity_ = capacity_ * 2;
-    int *mas = new int[capacity_];
+    int *mas = new int[size_];
     for (std::size_t i = 0; i < size_; i++) {
       mas[i] = elements_[i];
     }
     delete[] elements_;
-    elements_ = mas;
-    elements_[size_] = value;
-    size_++;
+     capacity_ = capacity_ * 2;
+    elements_ = new int[capacity_];
+     for(std::size_t i=0; i<size_;i++){
+	     elements_[i] = mas[i];
+     }
+      delete [] mas;
+      elements_[size_] = value;
+       size_++;
      }
    else {
     elements_[size_] = value;
