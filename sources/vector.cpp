@@ -3,11 +3,10 @@
 
 #include "vector.hpp"
 
-vector_t::vector_t()
-{
-	size_ = 0;
-	capacity_ = 0;
-	elements_ = nullptr;
+vector_t::vector_t() {
+  size_ = 0;
+  capacity_ = 0;
+  elements_ = nullptr;
 }
 
 vector_t::vector_t(vector_t const& other) {
@@ -37,7 +36,7 @@ bool vector_t::operator==(vector_t const& other) const {
     for (std::size_t i = 0; i < size_; i++) {
       if (this->elements_[i] != other.elements_[i]) {
         return false;
-	      break;
+        break;
       }
     }
     return true;
@@ -53,13 +52,9 @@ vector_t::~vector_t() {
   capacity_ = 0;
 }
 
-std::size_t vector_t::size() const {
-  return size_;
-}
+std::size_t vector_t::size() const { return size_; }
 
-std::size_t vector_t::capacity() const {
-  return capacity_;
-}
+std::size_t vector_t::capacity() const { return capacity_; }
 
 void vector_t::push_back(int value) {
   if (size_ == 0) {
@@ -67,27 +62,21 @@ void vector_t::push_back(int value) {
     capacity_ = 1;
     elements_ = new int[capacity_];
     elements_[0] = value;
-  } else if(size_ == capacity_) {
-    capacity_=capacity_ *2;
-	  int *mas = new int[capacity_];
+  } else if (size_ == capacity_) {
+    capacity_ = capacity_ * 2;
+    int* mas = new int[capacity_];
     for (std::size_t i = 0; i < size_; i++) {
       mas[i] = elements_[i];
     }
     delete[] elements_;
-   elements_=mas;
+    elements_ = mas;
 
-
-	
-     
-  
-      elements_[size_] = value;
-       size_++;
-     }
-   else {
     elements_[size_] = value;
     size_++;
-	   }
-  
+  } else {
+    elements_[size_] = value;
+    size_++;
+  }
 }
 
 void vector_t::pop_back() {
@@ -108,13 +97,9 @@ void vector_t::pop_back() {
   }
 }
 
-int& vector_t::operator[](std::size_t index) {
-  return elements_[index];
-}
+int& vector_t::operator[](std::size_t index) { return elements_[index]; }
 
-int vector_t::operator[](std::size_t index) const {
-  return elements_[index];
-}
+int vector_t::operator[](std::size_t index) const { return elements_[index]; }
 
 bool operator!=(vector_t const& lhs, vector_t const& rhs) {
   if (lhs == rhs) {
