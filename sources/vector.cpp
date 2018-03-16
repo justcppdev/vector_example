@@ -66,7 +66,8 @@ void vector_t::push_back(int value) {
     capacity_ = 1;
     elements_ = new int[capacity_];
     elements_[0] = value;
-  } else if (size_ == capacity_) {
+  } else {
+	  if(size_ == capacity_) {
     
     capacity_ = capacity_ * 2;
     int *mas = new int[capacity_];
@@ -77,10 +78,11 @@ void vector_t::push_back(int value) {
     elements_ = mas;
     elements_[size_] = value;
     size_++;
-
-  } else {
+     }
+   else {
     elements_[size_] = value;
     size_++;
+	   }
   }
 }
 
