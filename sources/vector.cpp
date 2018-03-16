@@ -80,7 +80,7 @@ void vector_t::push_back(int value) {
 
   } else {
     elements_[size_] = value;
-    size_++
+    size_++;
   }
 }
 
