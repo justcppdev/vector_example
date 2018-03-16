@@ -7,7 +7,7 @@ vector_t::vector_t()
 {
 	size_ = 0;
 	capacity_ = 0;
-	elements_ = new int [capacity_];
+	elements_ = nullptr;
 }
 
 vector_t::vector_t(vector_t const& other) {
@@ -75,10 +75,12 @@ void vector_t::push_back(int value) {
     }
     delete[] elements_;
     elements_ = mas;
-    elements_[size_++] = value;
+    elements_[size_] = value;
+    size_++;
 
   } else {
-    elements_[size_++] = value;
+    elements_[size_] = value;
+    size_++
   }
 }
 
@@ -101,11 +103,11 @@ void vector_t::pop_back() {
 }
 
 int& vector_t::operator[](std::size_t index) {
-  return elements_[0];
+  return elements_[index];
 }
 
 int vector_t::operator[](std::size_t index) const {
-  return 0;
+  return elements_[index];
 }
 
 bool operator!=(vector_t const& lhs, vector_t const& rhs) {
