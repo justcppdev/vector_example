@@ -115,13 +115,13 @@ void vector_t::push_back(int value)
 			elements_[i] = mas[i];
 		}
 		delete[] mas;
-		size_++;
 		elements_[size_] = value;
+		size_++;
 	}
 	else
 	{
-		size_++;
 		elements_[size_] = value;
+		size_++;
 	}
 }
 
