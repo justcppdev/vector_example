@@ -54,11 +54,11 @@ vector_t::~vector_t() {
 }
 
 std::size_t vector_t::size() const {
-  return 0;
+  return size_;
 }
 
 std::size_t vector_t::capacity() const {
-  return 0;
+  return capacity_;
 }
 
 void vector_t::push_back(int value) {
@@ -68,17 +68,18 @@ void vector_t::push_back(int value) {
     elements_ = new int[capacity_];
     elements_[0] = value;
   } else if(size_ == capacity_) {
-    int *mas = new int[size_];
+    capacity_=capacity_ *2;
+	  int *mas = new int[capacity_];
     for (std::size_t i = 0; i < size_; i++) {
       mas[i] = elements_[i];
     }
     delete[] elements_;
-     capacity_ = capacity_ * 2;
-    elements_ = new int[capacity_];
-     for(std::size_t i=0; i<size_;i++){
-	     elements_[i] = mas[i];
-     }
-      delete [] mas;
+   elements_=mas;
+
+
+	
+     
+  
       elements_[size_] = value;
        size_++;
      }
