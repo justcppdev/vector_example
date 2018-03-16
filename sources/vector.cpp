@@ -1,9 +1,9 @@
 
 vector_t::vector_t()
 {
-	int * elements_ = nullptr;
-	std::size_t size_ = 0;
-	std::size_t capacity_ = 0;
+	* elements_ = nullptr;
+	size_ = 0;
+	capacity_ = 0;
 }
 
 vector_t::vector_t(vector_t const & other)
