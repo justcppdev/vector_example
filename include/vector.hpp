@@ -28,7 +28,7 @@ public:
 };
 
 template <typename T>
-bool operator !=(vector_t const & lhs, vector_t const & rhs);
+bool operator !=(vector_t<T> const & lhs, vector_t<T> const & rhs);
 
 template <typename T>
 vector_t<T>::vector_t()
@@ -39,7 +39,7 @@ vector_t<T>::vector_t()
 }
 
 template <typename T>
-vector_t<T>::vector_t<T>(vector_t const & other)
+vector_t<T>::vector_t<T>(vector_t<T> const & other)
 {
 	size_ = other.size_;
 	capacity_ = other.capacity_;
@@ -174,7 +174,7 @@ int vector_t<T>::operator [](std::size_t index) const
 }
 
 template <typename T>
-bool operator !=(vector_t const & lhs, vector_t const & rhs)
+bool operator !=(vector_t<T> const & lhs, vector_t<T> const & rhs)
 {
 	if (lhs == rhs)
 	{
