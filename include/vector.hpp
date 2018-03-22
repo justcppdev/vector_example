@@ -24,7 +24,7 @@ public:
 	bool operator ==(vector_t const & other) const;
 };
 template <typename T>
-bool operator !=(vector_t<T> const & lhs, vector_t<T> const & rhs);
+
 
 template <typename T> 
 vector_t<T>::vector_t() {
