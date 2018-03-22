@@ -147,5 +147,5 @@ T& vector_t<T>::at(std::size_t index) {
   if (index >= size_ || index < 0) {
     throw std::out_of_range("Out of range");
   }
-  return elements_[index];
+  else return elements_[index];
 }
