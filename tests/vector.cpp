@@ -177,10 +177,10 @@ TEST_CASE("indexing vector_F")
 
 	vector.push_back(1.4);
 
-	REQUIRE( vector[0] == 1.4 );
+	REQUIRE( vector[0] == 1.4f);
 
 	vector_t<float> const copy(vector);
-	REQUIRE( copy[0] == 1.4 );
+	REQUIRE( copy[0] == 1.4f);
 }
 
 TEST_CASE("pushing elements_F")
