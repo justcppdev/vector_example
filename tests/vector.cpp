@@ -129,14 +129,14 @@ TEST_CASE("poping elements")
 
 //float
 
-TEST_CASE("creating vector")
+TEST_CASE("creating vector_F")
 {
 	vector_t<float> vector;
 	REQUIRE( vector.size() == 0 );
 	REQUIRE( vector.capacity() == 0 );
 }
 
-TEST_CASE("copying vector")
+TEST_CASE("copying vector_F")
 {
 	vector_t<float> vector;
 	vector.push_back(1.2);
@@ -145,7 +145,7 @@ TEST_CASE("copying vector")
 	REQUIRE( copy == vector );
 }
 
-TEST_CASE("assigning vector")
+TEST_CASE("assigning vector_F")
 {
 	vector_t<float> vector1;
 	vector_t<float> vector2;
@@ -157,7 +157,7 @@ TEST_CASE("assigning vector")
 	REQUIRE( vector1 == vector2 );
 }
 
-TEST_CASE("equaling vector")
+TEST_CASE("equaling vector_F")
 {
 	vector_t<float> vector1;
 	vector_t<float> vector2;
@@ -171,7 +171,7 @@ TEST_CASE("equaling vector")
 	REQUIRE( vector1 != vector2 );
 }
 
-TEST_CASE("indexing vector")
+TEST_CASE("indexing vector_F")
 {
 	vector_t<float> vector;
 
@@ -183,7 +183,7 @@ TEST_CASE("indexing vector")
 	REQUIRE( copy[0] == 1.4 );
 }
 
-TEST_CASE("pushing elements")
+TEST_CASE("pushing elements_F")
 {
 	vector_t<float> vector;
 
@@ -208,7 +208,7 @@ TEST_CASE("pushing elements")
 	REQUIRE( vector.capacity() == 8 );
 }
 
-TEST_CASE("poping elements")
+TEST_CASE("poping elements_F")
 {
 	vector_t<float> vector;
 
@@ -244,7 +244,7 @@ TEST_CASE("poping elements")
 	REQUIRE( vector.capacity() == 1 );
 }
 
-	TEST_CASE("error") 
+	TEST_CASE("error_f") 
 { 
 	vector_t<float> vector; 
 	vector.push_back(1.4);
