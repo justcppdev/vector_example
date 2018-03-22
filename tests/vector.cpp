@@ -123,5 +123,6 @@ TEST_CASE("poping elements")
 	vector_t<int> vector; 
 	vector.push_back(4);
 	vector.push_back(2); 
-	REQUIRE_THROWS_AS(vector.at(3), std::out_of_range); 
+	vector.push_back(9); 
+	REQUIRE_THROWS_AS(vector.at(4), std::out_of_range); 
 }
