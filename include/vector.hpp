@@ -23,7 +23,7 @@ public:
 
 	bool operator ==(vector_t const & other) const;
 };
-template <typename T>
+
 
 
 template <typename T> 
