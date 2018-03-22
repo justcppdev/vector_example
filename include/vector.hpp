@@ -123,7 +123,12 @@ void vector_t<T>::pop_back() {
 }
 
 template <typename T>
-int& vector_t<T>::operator[](std::size_t index) { return elements_[index]; }
+int& vector_t<T>::operator[](std::size_t index) { 
+	if(index < size_t){
+	return elements_[index];
+}
+else throw std::invalid_argument{"invalid index");	
+	}
 
 template <typename T>
 int vector_t<T>::operator[](std::size_t index) const { return elements_[index]; }
