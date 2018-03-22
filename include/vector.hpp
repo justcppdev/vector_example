@@ -41,7 +41,7 @@ vector_t<T>::vector_t(vector_t const& other) {
     elements_[i] = other.elements_[i];
   }
 }
-
+template <typename T>
 vector_t<T>& vector_t<T>::operator=(vector_t const& other) {
   if (this != &other) {
     delete[] elements_;
@@ -127,7 +127,7 @@ int& vector_t<T>::operator[](std::size_t index) {
 	if(index < size_){
 	return elements_[index];
 }
-else throw std::invalid_argument{"invalid index");	
+else throw std::invalid_argument("invalid index");	
 	}
 
 template <typename T>
