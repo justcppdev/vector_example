@@ -36,7 +36,7 @@ template <typename T>
 vector_t<T>::vector_t(vector_t const& other) {
   this->size_ = other.size_;
   this->capacity_ = other.capacity_;
-  this->elements_ = new T[capacity_];
+  T* elements_ = new T[capacity_];
   for (std::size_t i = 0; i < size_; i++) {
     elements_[i] = other.elements_[i];
   }
