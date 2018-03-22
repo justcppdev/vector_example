@@ -128,7 +128,7 @@ int& vector_t<T>::operator[](std::size_t index) {
 	if(index < size_){
 	return elements_[index];
 	}
-    else throw std::invalid_arguments("Wrong");
+    else throw std::out_of_range("Wrong");
 	}
 
 template <typename T>
