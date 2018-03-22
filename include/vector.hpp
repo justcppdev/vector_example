@@ -36,7 +36,7 @@ template <typename T>
 vector_t<T>::vector_t(vector_t const& other) {
   this->size_ = other.size_;
   this->capacity_ = other.capacity_;
-  this->elements_ = new int[capacity_];
+  this->elements_ = new T[capacity_];
   for (std::size_t i = 0; i < size_; i++) {
     elements_[i] = other.elements_[i];
   }
@@ -47,7 +47,7 @@ vector_t<T>& vector_t<T>::operator=(vector_t const& other) {
     delete[] elements_;
     this->size_ = other.size_;
     this->capacity_ = other.capacity_;
-    this->elements_ = new int[capacity_];
+    this->elements_ = new T[capacity_];
     for (std::size_t i = 0; i < size_; i++) {
       elements_[i] = other.elements_[i];
     }
@@ -86,11 +86,11 @@ void vector_t<T>::push_back(int value) {
   if (size_ == 0) {
     size_ = 1;
     capacity_ = 1;
-    elements_ = new int[capacity_];
+    elements_ = new T[capacity_];
     elements_[0] = value;
   } else if (size_ == capacity_) {
     capacity_ = capacity_ * 2;
-    int* mas = new int[capacity_];
+    int* mas = new T[capacity_];
     for (std::size_t i = 0; i < size_; i++) {
       mas[i] = elements_[i];
     }
@@ -108,13 +108,13 @@ void vector_t<T>::pop_back() {
   size_--;
   if (size_ == 0 || size_ * 4 == capacity_) {
     int* mas;
-    mas = new int[size_];
+    mas = new T[size_];
     for (std::size_t i = 0; i < size_; i++) {
       mas[i] = elements_[i];
     }
     delete[] elements_;
     capacity_ = capacity_ / 2;
-    elements_ = new int[capacity_];
+    elements_ = new T[capacity_];
     for (std::size_t i = 0; i < size_; i++) {
       elements_[i] = mas[i];
     }
