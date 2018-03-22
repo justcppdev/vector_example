@@ -1,4 +1,4 @@
-#include <algorithm>
+/*#include <algorithm>
 #include <cassert>
 
 #include "vector.hpp"
@@ -106,3 +106,4 @@ bool operator!=(vector_t const& lhs, vector_t const& rhs) {
   }
   return true;
 }
+*/
