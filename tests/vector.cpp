@@ -15,7 +15,7 @@ TEST_CASE("copying vector")
 	vector_t<int> vector;
 	vector.push_back(1);
 
-	vector_t copy(vector);
+	vector_t<int> copy(vector);
 	REQUIRE( copy == vector );
 }
 
