@@ -1,35 +1,31 @@
 #include <iostream>
 
-template <typename T> class vector_t
-{
-private:
-	T * elements_;
-	std::size_t size_;
-	std::size_t capacity_;
-public:
-	vector_t();
-	vector_t(vector_t const & other);
-	vector_t & operator =(vector_t const & other);
-	~vector_t();
+template <typename T>
+class vector_t {
+ private:
+  T* elements_;
+  std::size_t size_;
+  std::size_t capacity_;
 
-	std::size_t size() const;
-	std::size_t capacity() const;
+ public:
+  vector_t();
+  vector_t(vector_t const& other);
+  vector_t& operator=(vector_t const& other);
+  ~vector_t();
 
-	void push_back(int value);
-	void pop_back();
+  std::size_t size() const;
+  std::size_t capacity() const;
 
-	int & operator [](std::size_t index);
-	int operator [](std::size_t index) const;
-        T & as(std::size_t index);
-	bool operator ==(vector_t const & other) const;
-	
-		
-	
+  void push_back(int value);
+  void pop_back();
+
+  int& operator[](std::size_t index);
+  int operator[](std::size_t index) const;
+  T& as(std::size_t index);
+  bool operator==(vector_t const& other) const;
 };
 
-
-
-template <typename T> 
+template <typename T>
 vector_t<T>::vector_t() {
   size_ = 0;
   capacity_ = 0;
@@ -79,10 +75,14 @@ vector_t<T>::~vector_t() {
   capacity_ = 0;
 }
 template <typename T>
-std::size_t vector_t<T>::size() const { return size_; }
+std::size_t vector_t<T>::size() const {
+  return size_;
+}
 
 template <typename T>
-std::size_t vector_t<T>::capacity() const { return capacity_; }
+std::size_t vector_t<T>::capacity() const {
+  return capacity_;
+}
 
 template <typename T>
 void vector_t<T>::push_back(int value) {
@@ -126,12 +126,14 @@ void vector_t<T>::pop_back() {
 }
 
 template <typename T>
-int& vector_t<T>::operator[](std::size_t index) { 
-	return elements_[index];
-	}
+int& vector_t<T>::operator[](std::size_t index) {
+  return elements_[index];
+}
 
 template <typename T>
-int vector_t<T>::operator[](std::size_t index) const { return elements_[index]; }
+int vector_t<T>::operator[](std::size_t index) const {
+  return elements_[index];
+}
 
 template <typename T>
 bool operator!=(vector_t<T> const& lhs, vector_t<T> const& rhs) {
@@ -141,9 +143,9 @@ bool operator!=(vector_t<T> const& lhs, vector_t<T> const& rhs) {
   return true;
 }
 
- T & vector_t<T>::at(std::size_t index){
-   if (index > 0 && index <size_){
-	return elements_[index];
-   }
- else throw std::out_of_range( "Wrong" );
- }
+T& vector_t<T>::at(std::size_t index) {
+  if (index >= size_ || index < 0) {
+    throw std::out_of_range("Out of range");
+  }
+  return elements_[index];
+}
