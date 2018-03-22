@@ -19,13 +19,13 @@ public:
 	std::size_t capacity() const;
 	T & at(std::size_t index)
 	{
-		if(index >= size_) 
-		{ 
-			throw std::out_of_range("Error"); 
-		} 
-	return (*this)[index]; 
+		if (index >= size_)
+		{
+			throw std::out_of_range("Error");
+		}
+		return (*this)[index];
 	}
-	void push_back(int value);
+	void push_back(T value);
 	void pop_back();
 
 	int & operator [](std::size_t index);
@@ -110,7 +110,7 @@ std::size_t vector_t<T>::capacity() const
 }
 
 template <typename T>
-void vector_t<T>::push_back(int value)
+void vector_t<T>::push_back(T value)
 {
 	if (size_ == 0)
 	{
