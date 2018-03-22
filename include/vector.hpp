@@ -124,10 +124,8 @@ void vector_t<T>::pop_back() {
 
 template <typename T>
 int& vector_t<T>::operator[](std::size_t index) { 
-	if(index < size_){
 	return elements_[index];
-}
-else throw std::invalid_argument("invalid index");	
+
 	}
 
 template <typename T>
