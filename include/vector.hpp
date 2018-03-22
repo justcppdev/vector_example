@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cassert>
 
+
 template <typename T>
 class vector_t
 {
