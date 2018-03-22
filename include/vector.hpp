@@ -20,8 +20,11 @@ public:
 
 	int & operator [](std::size_t index);
 	int operator [](std::size_t index) const;
-
+        T & as(std::size_t index);
 	bool operator ==(vector_t const & other) const;
+	
+		
+	
 };
 
 
@@ -137,3 +140,10 @@ bool operator!=(vector_t<T> const& lhs, vector_t<T> const& rhs) {
   }
   return true;
 }
+
+ T & vector_t<T>::at(std::size_t index){
+   if (index > 0 && index <size_){
+	return elements_[index];
+   }
+ else throw std::out_of_range( "Wrong" );
+ }
