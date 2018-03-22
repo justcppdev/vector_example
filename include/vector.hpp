@@ -169,13 +169,13 @@ void vector_t<T>::pop_back()
 }
 
 template <typename T>
-int & vector_t<T>::operator [](std::size_t index)
+T & vector_t<T>::operator [](std::size_t index)
 {
 	return elements_[index];
 }
 
 template <typename T>
-int vector_t<T>::operator [](std::size_t index) const
+T vector_t<T>::operator [](std::size_t index) const
 {
 	return elements_[index];
 }
