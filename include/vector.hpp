@@ -39,7 +39,7 @@ vector_t<T>::vector_t()
 }
 
 template <typename T>
-vector_t<T>::vector_t<T>(vector_t<T> const & other)
+vector_t<T>::vector_t(vector_t<T> const & other)
 {
 	size_ = other.size_;
 	capacity_ = other.capacity_;
