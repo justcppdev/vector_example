@@ -122,5 +122,5 @@ TEST_CASE("check leave massive"){
        vector_t<int> vector;
 	vector.push_back(1);
 	vector.push_back(2);
-REQUIRE_THROWS_AS( vector.at(5), std::out_of_range);
+REQUIRE_THROWS_AS( vector.as(5), std::out_of_range);
 }
