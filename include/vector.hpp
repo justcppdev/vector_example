@@ -18,14 +18,7 @@ public:
 
 	std::size_t size() const;
 	std::size_t capacity() const;
-	T & at(std::size_t index)
-	{
-		if (index >= size_)
-		{
-			throw std::out_of_range("Error");
-		}
-		return (*this)[index];
-	}
+	T & at(std::size_t index);
 	void push_back(T value);
 	void pop_back();
 
@@ -190,3 +183,13 @@ bool operator !=(vector_t<T> const & lhs, vector_t<T> const & rhs)
 	}
 	return true;
 }
+
+template <typename T>
+T & at(std::size_t index)
+	{
+		if (index >= size_)
+		{
+			throw std::out_of_range("Error. Out of range!");
+		}
+		return (*this)[index];
+	}
