@@ -19,8 +19,8 @@ class vector_t {
   void push_back(int value);
   void pop_back();
 
-  int& operator[](std::size_t index);
-  int operator[](std::size_t index) const;
+  T& operator[](std::size_t index);
+  T operator[](std::size_t index) const;
   T& as(std::size_t index);
   bool operator==(vector_t const& other) const;
 };
@@ -126,12 +126,12 @@ void vector_t<T>::pop_back() {
 }
 
 template <typename T>
-int& vector_t<T>::operator[](std::size_t index) {
+T& vector_t<T>::operator[](std::size_t index) {
   return elements_[index];
 }
 
 template <typename T>
-int vector_t<T>::operator[](std::size_t index) const {
+T vector_t<T>::operator[](std::size_t index) const {
   return elements_[index];
 }
 
