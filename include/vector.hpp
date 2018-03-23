@@ -185,11 +185,10 @@ bool operator !=(vector_t<T> const & lhs, vector_t<T> const & rhs)
 }
 
 template <typename T>
-T & at(std::size_t index)
+T & vector_t<T>::at (std::size_t index) const
 {
-	if (index >= size_)
-	{
-		throw std::out_of_range("Error. Out of range!");
+	if ( index >= size_ ) {
+		throw std::out_of_range( "Error range" );
 	}
 	return elements_[index];
 }
