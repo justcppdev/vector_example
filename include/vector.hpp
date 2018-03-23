@@ -145,7 +145,7 @@ bool operator!=(vector_t<T> const& lhs, vector_t<T> const& rhs) {
 template <typename T>
 
 T& vector_t<T>::as(std::size_t index) {
-  if (index >= size_ || index < 0) {
+  if (index >= size_ ) {
     throw std::out_of_range("Out of range");
   }
   else return elements_[index];
