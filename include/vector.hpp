@@ -142,8 +142,9 @@ bool operator!=(vector_t<T> const& lhs, vector_t<T> const& rhs) {
   }
   return true;
 }
+template <typename T>
 
-T& vector_t<T>::at(std::size_t index) {
+T& vector_t<T>::as(std::size_t index) {
   if (index >= size_ || index < 0) {
     throw std::out_of_range("Out of range");
   }
