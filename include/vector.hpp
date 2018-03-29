@@ -49,7 +49,7 @@ public:
             }
             default:
             {
-                cout << "invalid operation";
+               throw std::invalid_argument("Error of use operator");
             }
         }
     }
@@ -128,9 +128,9 @@ public:
 
         for (unsigned int i = 0; i < level; i++)
         {
-            stream << "---";
+            std::stream << "---";
         }
-        stream << node->value << endl;
+          std::stream << node->value <<   std::endl;
 
         print(stream, level + 1, node->left);
     }
