@@ -96,7 +96,6 @@ class tree_t {
   }
   void destroy(node_t* node) {
     node_t* time = node;
-    cout << "skolko raz delete";
     while (time != nullptr) {
       if (time->left != nullptr) {
         time = time->left;
