@@ -73,7 +73,7 @@ class tree_t {
 
     print(stream, level + 1, node->left);
   }
-  void act(std::ostream& stream, char op, int value) {
+  void operation(std::ostream& stream, char op, int value) {
     switch (op) {
       case '+': {
         insert(value);
