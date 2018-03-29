@@ -115,7 +115,7 @@ class tree_t {
       } else if (time == node && node->left == nullptr &&
                  node->right == nullptr) {
         delete time;
-        break;
+        return;
       } else if (time->left == nullptr && time->right == nullptr) {
         delete time;
         time = node;
