@@ -22,7 +22,7 @@ TEST_CASE("Add elements in tree")
 		"---9\n"
 		"7\n"
 		"------6\n"
-		"---3"};
+		"---3\n"};
 	REQUIRE(output == ostream.str());
 }
 
