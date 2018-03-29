@@ -24,7 +24,7 @@ TEST_CASE("insert")
 	};
 	
 	std::ostringstream stream;
-	tree.print (stream, tree1.root());
+	tree1.print (stream, tree1.root());
 	
 	REQUIRE(stream.str() == out);
 	
