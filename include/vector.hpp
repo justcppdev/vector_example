@@ -62,7 +62,8 @@ class tree_t {
   }
 
   void print(std::ostream& stream, int level, node_t* node) {
-    if (node == nullptr) return;
+    if (node == nullptr)
+      return;
 
     print(stream, level + 1, node->right);
 
@@ -73,18 +74,18 @@ class tree_t {
 
     print(stream, level + 1, node->left);
   }
- void act( char op, int value, std::ostream& stream) {
+  void act(char op, int value, std::ostream& stream) {
     switch (op) {
       case '+': {
         insert(value);
         break;
       }
       case '?': {
-       if (find(value)) {
-					stream << "true";
-				}
-				else stream << "false";
-				break;
+        if (find(value)) {
+          stream << "true";
+        } else
+          stream << "false";
+        break;
       }
       case '=': {
         print(stream, 0, root_);
