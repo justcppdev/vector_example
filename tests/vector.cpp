@@ -40,10 +40,10 @@ TEST_CASE("Check root tree")
 TEST_CASE("Check operator tree '+' and '=' ")
 {
 	tree_t My_tree;
-	My_tree.operation('+', 7);
-	My_tree.operation('+', 3);
-	My_tree.operation('+', 9);
-	My_tree.operation('+', 6);
+	My_tree.check_operator('+', 7);
+	My_tree.check_operator('+', 3);
+	My_tree.check_operator('+', 9);
+	My_tree.check_operator('+', 6);
 	std::string output {
 		"---9\n"
 		"7\n"
