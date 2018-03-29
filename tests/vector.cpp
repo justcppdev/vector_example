@@ -40,16 +40,16 @@ TEST_CASE("Check root tree")
 TEST_CASE("Check operator tree '+' and '=' ")
 {
 	tree_t My_tree;
-	My_tree.check_operator('+', 7);
-	My_tree.check_operator('+', 3);
-	My_tree.check_operator('+', 9);
-	My_tree.check_operator('+', 6);
+	std::ostringstream ostream;
+	My_tree.check_operator(ostream, '+', 7);
+	My_tree.check_operator(ostream, '+', 3);
+	My_tree.check_operator(ostream, '+', 9);
+	My_tree.check_operator(ostream, '+', 6);
 	std::string output {
 		"---9\n"
 		"7\n"
 		"------6\n"
 		"---3"};
-	std::ostringstream ostream;
 	My_tree.check_operator (ostream, '=', 0);
 	
 	REQUIRE(output == stream.str());
