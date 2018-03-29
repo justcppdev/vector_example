@@ -135,14 +135,16 @@ public:
         print(stream, level + 1, node->left);
     }
 
-   void destroy(node_t* node) {
-    if(node != nullptr){
-      destroy(node->left);
-     destroy(node->right);
-    }
-	   
-    ~tree_t()
-    {
-        destroy(root_);
-    }
+   void destroy(node_t* node)
+   {
+	if (node != nullptr)
+	{
+		destroy(node->left);
+		destroy(node->right);
+	}
+   }
+	~tree_t()
+	{
+		destroy(root_);	
+	}
 };
