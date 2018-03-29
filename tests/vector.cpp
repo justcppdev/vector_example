@@ -52,7 +52,7 @@ TEST_CASE("Check operator tree '+' and '=' ")
 		"---3"};
 	My_tree.check_operator (ostream, '=', 0);
 	
-	REQUIRE(output == otream.str());
+	REQUIRE(output == ostream.str());
 }
 TEST_CASE("Check operator tree '?' ")
 {
