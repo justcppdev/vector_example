@@ -24,7 +24,7 @@ TEST_CASE("insert")
 	};
 	
 	std::ostringstream stream;
-	tree.print (stream, tree.set_pointer());
+	tree.print (stream, tree1.root());
 	
 	REQUIRE(stream.str() == out);
 	
@@ -37,22 +37,22 @@ TEST_CASE("find")
   tree1.insert(4);
   tree1.insert(6); 
   tree1.insert(7);
-  REQUIRE(tree.find(5) == true);
-  REQUIRE(tree.find(8) == false);
+  REQUIRE(tree1.find(5) == true);
+  REQUIRE(tree1.find(8) == false);
 	
 }
 TEST_CASE("operations")
 {
- tree.operation('+', 5);
- tree.operation('+', 4);
- tree.operation('+', 6);	
+ tree1.operation('+', 5);
+ tree1.operation('+', 4);
+ tree1.operation('+', 6);	
 	std::string out {
 		"--------6\n"
 		"----5\n"
 		"--------4\n"
 	};
 	std::ostringstream stream;
-	tree.operation ('=', stream);
+	tree1.operation ('=', stream);
 	
 	REQUIRE(stream.str() == out);
 }
