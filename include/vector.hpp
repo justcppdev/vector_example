@@ -124,7 +124,7 @@ public:
         if (node == nullptr)
             return;
 
-        print(stream, level + 1, node->right);
+        print(std::stream, level + 1, node->right);
 
         for (unsigned int i = 0; i < level; i++)
         {
@@ -132,7 +132,7 @@ public:
         }
           std::stream << node->value <<   std::endl;
 
-        print(stream, level + 1, node->left);
+        print(std::stream, level + 1, node->left);
     }
 
     void destroy(node_t* node)
