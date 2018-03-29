@@ -34,7 +34,7 @@ TEST_CASE("insert") {
   tree1.insert(7);
   REQUIRE(tree1.find(5) == true);
   REQUIRE(tree1.find(8) == false);*/
-}
+//}
 /*TEST_CASE("operations") {
   tree_t tree1;
   tree1.act1('+', 5);
