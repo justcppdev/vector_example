@@ -43,7 +43,7 @@ TEST_CASE("find")
 }
 TEST_CASE("operations")
 {
- tree_t tree1;
+tree_t tree1;
  tree1.act('+', 5);
  tree1.act('+', 4);
  tree1.act('+', 6);	
