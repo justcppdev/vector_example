@@ -21,7 +21,7 @@ TEST_CASE("insert")
 		"---6\n"
 		"5\n"
 		"---4\n"
-	};
+};
 	
 	std::ostringstream stream;
 	tree1.print (stream,0,tree1.root());
