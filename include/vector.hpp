@@ -106,7 +106,7 @@ class tree_t {
     }
   }
   void destroy(node_t* node) {
-    if (node != nullptr) {
+    if (root_!= nullptr) {
       node_t* time = node;
       while (time != nullptr) {
         if (time->left != nullptr) {
