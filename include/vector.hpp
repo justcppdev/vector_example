@@ -106,23 +106,11 @@ class tree_t {
     }
   }
   void destroy(node_t* node) {
-    if (root_!= nullptr) {
-      node_t* time = node;
-      while (time != nullptr) {
-        if (time->left != nullptr) {
-          time = time->left;
-        } else if (time->right != nullptr) {
-          time = time->right;
-        } else if (time == node && node->left == nullptr &&
-                   node->right == nullptr) {
-          delete time;
-          break;
-        } else if (time->left == nullptr && time->right == nullptr) {
-          delete time;
-          time = node;
-        }
-      }
+    if(node != nullptr){
+      destroy(node->left);
+     destroy(node->right);
     }
+   delete node;
   }
   ~tree_t() { destroy(root_); }
 };
