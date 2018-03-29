@@ -69,7 +69,7 @@ class tree_t {
     for (unsigned int i = 0; i < level; i++) {
       stream << "---";
     }
-    stream << node->value << endl;
+    stream << node->value << std::endl;
 
     print(stream, level + 1, node->left);
   }
@@ -91,7 +91,7 @@ class tree_t {
         exit(0);
         break;
       }
-      default: { cout << "invalid operation"; }
+      default: { std::cout << "invalid operation"; }
     }
   }
   void destroy(node_t* node) {
