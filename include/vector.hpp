@@ -73,7 +73,7 @@ class tree_t {
 
     print(stream, level + 1, node->left);
   }
-  void act( char op, int value) {
+ void act( char op, int value, std::ostream& stream) {
     switch (op) {
       case '+': {
         insert(value);
@@ -83,6 +83,10 @@ class tree_t {
         find(value);
         break;
       }
+      case '=': {
+        print(stream, 0, root_);
+        break;
+      }
       case 'q': {
         exit(0);
         break;
@@ -90,13 +94,6 @@ class tree_t {
       default: { std::cout << "invalid operation"; }
     }
   }
- void act1(char op, std::ostream& stream){
-     if(op == '='){
-        print(stream, 0, root_);
-        break;
-     
-     }
- }
   void destroy(node_t* node) {
     node_t* time = node;
     while (time != nullptr) {
