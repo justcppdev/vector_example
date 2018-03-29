@@ -1,6 +1,5 @@
 #include <iostream>
-#include <algorithm>
-#include <cassert>
+
 
 class tree_t
 {
@@ -16,35 +15,33 @@ public:
 	tree_t() {
 		root_ = nullptr;
 	}
-	node_t* root() { return root_; }
-	~tree_t() {
-		node_t * time_node = new node_t;
-		time_node = root_;
-		while (time_node!= nullptr) 
-		{
-			if (time_node->left != nullptr) 
-			{
-				time_node = time_node->left;
-			}
-			else if (time_node->right != nullptr)
-			{
-				time_node = time_node->right;
-			}
-			else if (time_node->left == nullptr && time_node->right == nullptr)
-			{
-				delete[] time_node->left;
-				delete[] time_node->right;
-				time_node = root_;
-				if (time_node->left == nullptr && time_node->right == nullptr) 
-				{
-					time_node = nullptr;
-					cout << "delete root";
-				}
-				cout << "udalil";
-			}
-		}
-		delete[] time_node;
+	node_t* root()
+	{
+		return root_; 
 	}
+	
+	void check_operator(std::ostream& stream, char op, int value) {
+    switch (op) {
+      case '+': {
+        insert(value);
+        break;
+      }
+      case '?': {
+        find(value);
+        break;
+      }
+      case '=': {
+        print(stream, 0, root_);
+        break;
+      }
+      case 'q': {
+        exit(0);
+        break;
+      }
+      default: { cout << "invalid operation"; }
+    }
+  }
+	
 	void insert(int value) {
 		node_t* node = new node_t;
 		node->value = value;
@@ -107,5 +104,27 @@ public:
 		stream << node->value << endl;
 
 		print(stream, level + 1, node->left);
+	}
+	
+	void destroy(node_t* node) {
+    node_t* time = node;
+    while (time != nullptr) {
+      if (time->left != nullptr) {
+        time = time->left;
+      } else if (time->right != nullptr) {
+        time = time->right;
+      } else if (time == node && node->left == nullptr &&
+                 node->right == nullptr) {
+        delete time;
+        break;
+      } else if (time->left == nullptr && time->right == nullptr) {
+        delete time;
+        time = node;
+      }
+    }
+  }
+	~tree_t() 
+	{ 
+		destroy(root_); 
 	}
 };
