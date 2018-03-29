@@ -1,152 +1,116 @@
 #include <iostream>
 
-template <typename T>
-class vector_t {
+class tree_t {
  private:
-  T* elements_;
-  std::size_t size_;
-  std::size_t capacity_;
+  struct node_t {
+    node_t* left;
+    node_t* right;
+    int value;
+  };
+
+ private:
+  node_t* root_;
 
  public:
-  vector_t();
-  vector_t(vector_t const& other);
-  vector_t& operator=(vector_t const& other);
-  ~vector_t();
+  tree_t() { root_ = nullptr; }
 
-  std::size_t size() const;
-  std::size_t capacity() const;
+  node_t* root() { return root_; }
 
-  void push_back(int value);
-  void pop_back();
+  void insert(int value) {
+    node_t* node = new node_t;
+    node->value = value;
+    node->right = nullptr;
+    node->left = nullptr;
+    if (root_ == nullptr) {
+      root_ = node;
+      return;
+    }
 
-  T& operator[](std::size_t index);
-  T operator[](std::size_t index) const;
-  T& as(std::size_t index);
-  bool operator==(vector_t const& other) const;
-};
-
-template <typename T>
-vector_t<T>::vector_t() {
-  size_ = 0;
-  capacity_ = 0;
-  elements_ = nullptr;
-}
-template <typename T>
-vector_t<T>::vector_t(vector_t const& other) {
-  this->size_ = other.size_;
-  this->capacity_ = other.capacity_;
-  this->elements_ = new T[capacity_];
-  for (std::size_t i = 0; i < size_; i++) {
-    elements_[i] = other.elements_[i];
-  }
-}
-template <typename T>
-vector_t<T>& vector_t<T>::operator=(vector_t const& other) {
-  if (this != &other) {
-    delete[] elements_;
-    this->size_ = other.size_;
-    this->capacity_ = other.capacity_;
-    this->elements_ = new T[capacity_];
-    for (std::size_t i = 0; i < size_; i++) {
-      elements_[i] = other.elements_[i];
+    node_t* vetka = root_;
+    while (vetka != nullptr) {
+      if (vetka->value < value) {
+        if (vetka->right != nullptr) {
+          vetka = vetka->right;
+        } else {
+          vetka->right = node;
+          return;
+        }
+      } else if (vetka->value > value) {
+        if (vetka->left != nullptr) {
+          vetka = vetka->left;
+        } else {
+          vetka->left = node;
+          return;
+        }
+      } else
+        return;
     }
   }
-  return *this;
-}
-template <typename T>
-bool vector_t<T>::operator==(vector_t const& other) const {
-  if (this->size_ == other.size_) {
-    for (std::size_t i = 0; i < size_; i++) {
-      if (this->elements_[i] != other.elements_[i]) {
-        return false;
-        break;
+  bool find(int value) const {
+    node_t* node = root_;
+    while (node != nullptr) {
+      if (node->value == value) {
+        return true;
+      } else {
+        if (value <= node->value) {
+          node = node->left;
+        } else
+          node = node->right;
       }
     }
-    return true;
-  }
-
-  else
-    return false;
-}
-template <typename T>
-vector_t<T>::~vector_t() {
-  delete[] elements_;
-  size_ = 0;
-  capacity_ = 0;
-}
-template <typename T>
-std::size_t vector_t<T>::size() const {
-  return size_;
-}
-
-template <typename T>
-std::size_t vector_t<T>::capacity() const {
-  return capacity_;
-}
-
-template <typename T>
-void vector_t<T>::push_back(int value) {
-  if (size_ == 0) {
-    size_ = 1;
-    capacity_ = 1;
-    elements_ = new T[capacity_];
-    elements_[0] = value;
-  } else if (size_ == capacity_) {
-    capacity_ = capacity_ * 2;
-    int* mas = new T[capacity_];
-    for (std::size_t i = 0; i < size_; i++) {
-      mas[i] = elements_[i];
-    }
-    delete[] elements_;
-    elements_ = mas;
-    elements_[size_] = value;
-    size_++;
-  } else {
-    elements_[size_] = value;
-    size_++;
-  }
-}
-template <typename T>
-void vector_t<T>::pop_back() {
-  size_--;
-  if (size_ == 0 || size_ * 4 == capacity_) {
-    int* mas;
-    mas = new T[size_];
-    for (std::size_t i = 0; i < size_; i++) {
-      mas[i] = elements_[i];
-    }
-    delete[] elements_;
-    capacity_ = capacity_ / 2;
-    elements_ = new T[capacity_];
-    for (std::size_t i = 0; i < size_; i++) {
-      elements_[i] = mas[i];
-    }
-    delete[] mas;
-  }
-}
-
-template <typename T>
-T& vector_t<T>::operator[](std::size_t index) {
-  return elements_[index];
-}
-
-template <typename T>
-T vector_t<T>::operator[](std::size_t index) const {
-  return elements_[index];
-}
-
-template <typename T>
-bool operator!=(vector_t<T> const& lhs, vector_t<T> const& rhs) {
-  if (lhs == rhs) {
     return false;
   }
-  return true;
-}
-template <typename T>
 
-T& vector_t<T>::as(std::size_t index) {
-  if (index >= size_ ) {
-    throw std::out_of_range("Out of range");
+  void print(std::ostream& stream, int level, node_t* node) {
+    if (node == nullptr) return;
+
+    print(stream, level + 1, node->right);
+
+    for (unsigned int i = 0; i < level; i++) {
+      stream << "---";
+    }
+    stream << node->value << endl;
+
+    print(stream, level + 1, node->left);
   }
-  else return elements_[index];
-}
+  void act(std::ostream& stream, char op, int value) {
+    switch (op) {
+      case '+': {
+        insert(value);
+        break;
+      }
+      case '?': {
+        find(value);
+        break;
+      }
+      case '=': {
+        print(stream, 0, root_);
+        break;
+      }
+      case 'q': {
+        exit(0);
+        break;
+      }
+      default: { cout << "invalid operation"; }
+    }
+  }
+  void destroy(node_t* node) {
+    node_t* time = node;
+    cout << "skolko raz delete";
+    while (time != nullptr) {
+      if (time->left != nullptr) {
+        time = time->left;
+      } else if (time->right != nullptr) {
+        time = time->right;
+      } else if (time == node && node->left == nullptr &&
+                 node->right == nullptr) {
+        delete time;
+        break;
+      } else if (time->left == nullptr && time->right == nullptr) {
+        delete time;
+        time = node;
+      }
+    }
+  }
+  ~tree_t() { destroy(root_); }
+};
