@@ -76,10 +76,6 @@ class tree_t {
   }
   void act(char op, int value, std::ostream& stream) {
     switch (op) {
-      case '+': {
-        insert(value);
-        break;
-      }
       case '?': {
         if (find(value)) {
           stream << "true";
@@ -89,6 +85,17 @@ class tree_t {
       }
       case '=': {
         print(stream, 0, root_);
+        break;
+      }
+
+      default: { std::cout << "invalid operation"; }
+    }
+  }
+
+  void act1(char op, int value) {
+    switch (op) {
+      case '+': {
+        insert(value);
         break;
       }
       case 'q': {
