@@ -64,10 +64,4 @@ TEST_CASE("Check operator tree '?' ")
 	My_tree.check_operator (ostream, '?', 3);
 	REQUIRE(ostream.str() == "true");
 }
-	  TEST_CASE("Check other operator tree ")
-{
-	tree_t My_tree;
-	std::ostringstream ostream;
-	My_tree.check_operator (ostream, '^', 3);
-	REQUIRE_THROWS_AS(My_tree.check_operator((ostream, '^', 3), std::invalid_argument);
-}
+	
