@@ -62,6 +62,6 @@ tree_t tree1;
 	tree1.act('?', 3, stream2);
 	REQUIRE(stream1.str() == "false");
 	
-	tree1.act ('=', 0 , stream);
+	tree1.act1 ('=', 0 , stream);
 	REQUIRE(stream2.str() == out);
 }
