@@ -53,7 +53,7 @@ TEST_CASE("operations")
 		"--------4\n"
 	};
 	std::ostringstream stream;
-	tree1.operation ('=', stream);
+	tree1.operation ('=', 0 , stream);
 	
 	REQUIRE(stream.str() == out);
 }
