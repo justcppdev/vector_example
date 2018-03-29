@@ -34,7 +34,11 @@ public:
             }
             case '?':
             {
-                find(value);
+                if(find(value))
+		{
+			stream << "true";
+		}
+		else stream << "false";
                 break;
             }
             case '=':
