@@ -137,28 +137,11 @@ public:
 
     void destroy(node_t* node)
     {
-        node_t* time = node;
-        while (time != nullptr)
-        {
-            if (time->left != nullptr)
-            {
-                time = time->left;
-            }
-            else if (time->right != nullptr)
-            {
-                time = time->right;
-            }
-            else if (time == node && node->left == nullptr && node->right == nullptr)
-            {
-                delete time;
-                break;
-            }
-            else if (time->left == nullptr && time->right == nullptr)
-            {
-                delete time;
-                time = node;
-            }
-        }
+       if (root_ != nullptr) {
+			if (node->left) del (node->left);
+			if (node->right) del (node->right);
+		}
+		delete node;
     }
     ~tree_t()
     {
