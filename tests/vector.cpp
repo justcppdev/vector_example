@@ -44,16 +44,24 @@ TEST_CASE("find")
 TEST_CASE("operations")
 {
 tree_t tree1;
- tree1.act('+', 5 , 0);
- tree1.act('+', 4 , 0);
- tree1.act('+', 6 , 0);	
+ tree1.act('+', 5);
+ tree1.act('+', 4);
+ tree1.act('+', 6);	
 	std::string out {
-		"--------6\n"
-		"----5\n"
-		"--------4\n"
+		"---6\n"
+		"5\n"
+		"---4\n"
 	};
 	std::ostringstream stream;
-	tree1.operation ('=', 0 , stream);
+	sdt::ostringstream stream1;
+	sdt::ostringstream stream2;
 	
-	REQUIRE(stream.str() == out);
+	tree1.act('?', 5, stream);
+	REQUIRE(stream.str() == "true");
+	
+	tree1.act('?', 3, stream2);
+	REQUIRE(stream1.str() == "false");
+	
+	tree1.act ('=', 0 , stream);
+	REQUIRE(stream2.str() == out);
 }
