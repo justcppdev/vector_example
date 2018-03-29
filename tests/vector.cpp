@@ -44,9 +44,9 @@ TEST_CASE("find")
 TEST_CASE("operations")
 {
 tree_t tree1;
- tree1.act('+', 5);
- tree1.act('+', 4);
- tree1.act('+', 6);	
+ tree1.act1('+', 5);
+ tree1.act1('+', 4);
+ tree1.act1('+', 6);	
 	std::string out {
 		"---6\n"
 		"5\n"
