@@ -53,8 +53,8 @@ tree_t tree1;
 		"---4\n"
 	};
 	std::ostringstream stream;
-	sdt::ostringstream stream1;
-	sdt::ostringstream stream2;
+	std::ostringstream stream1;
+	std::ostringstream stream2;
 	
 	tree1.act('?', 5, stream);
 	REQUIRE(stream.str() == "true");
