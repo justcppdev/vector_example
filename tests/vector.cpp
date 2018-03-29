@@ -26,7 +26,7 @@ TEST_CASE("insert") {
   REQUIRE(stream.str() == out);
 }
 
-/*TEST_CASE("find") {
+TEST_CASE("find") {
   tree_t tree1;
   tree1.insert(5);
   tree1.insert(4);
@@ -34,8 +34,8 @@ TEST_CASE("insert") {
   tree1.insert(7);
   REQUIRE(tree1.find(5) == true);
   REQUIRE(tree1.find(8) == false);*/
-//}
-/*TEST_CASE("operations") {
+}
+TEST_CASE("operations") {
   tree_t tree1;
   tree1.act1('+', 5);
   tree1.act1('+', 4);
@@ -51,9 +51,9 @@ TEST_CASE("insert") {
   tree1.act('?', 5, stream);
   REQUIRE(stream.str() == "true");
 
-  tree1.act('?', 3, stream);
+  tree1.act('?', 3, stream1);
   REQUIRE(stream1.str() == "false");
 
-  tree1.act('=', 0, stream);
+  tree1.act('=', 0, stream2);
   REQUIRE(stream2.str() == out);
-}*/
+}
