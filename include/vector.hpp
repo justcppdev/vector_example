@@ -53,7 +53,7 @@ public:
             }
             default:
             {
-               throw std::invalid_argument("Error of use operator");
+              stream <<"Error of use operator";
             }
         }
     }
