@@ -37,7 +37,7 @@ TEST_CASE("Check root tree")
   REQUIRE(My_tree.find(2) == false);
 }
 
-TEST_CASE("Check operator tree '+' and '=')
+TEST_CASE("Check operator tree '+' and '=' ")
 {
 	tree_t My_tree;
 	My_tree.operation('+', 7);
@@ -54,7 +54,7 @@ TEST_CASE("Check operator tree '+' and '=')
 	
 	REQUIRE(output == stream.str());
 }
-TEST_CASE("Check operator tree '?')
+TEST_CASE("Check operator tree '?' ")
 {
 	tree_t My_tree;
 	My_tree.insert(7);
@@ -64,7 +64,7 @@ TEST_CASE("Check operator tree '?')
 	My_tree.check_operator (ostream, '?', 3);
 	REQUIRE(ostream.str() == "true");
 }
-	  TEST_CASE("Check other operator tree )
+	  TEST_CASE("Check other operator tree ")
 {
 	tree_t My_tree;
 	std::ostringstream ostream;
