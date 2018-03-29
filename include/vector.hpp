@@ -80,8 +80,11 @@ class tree_t {
         break;
       }
       case '?': {
-        find(value);
-        break;
+       if (find(value)) {
+					stream << "true";
+				}
+				else stream << "false";
+				break;
       }
       case '=': {
         print(stream, 0, root_);
