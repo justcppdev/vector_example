@@ -16,6 +16,7 @@ public:
 	tree_t() {
 		root_ = nullptr;
 	}
+	node_t* root() { return root_; }
 	~tree_t() {
 		node_t * time_node = new node_t;
 		time_node = root_;
