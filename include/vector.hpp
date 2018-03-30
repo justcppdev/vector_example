@@ -145,6 +145,7 @@ public:
 	{
 		destroy(node->left);
 		destroy(node->right);
+		delete node;
 	}
    }
 	~tree_t()
