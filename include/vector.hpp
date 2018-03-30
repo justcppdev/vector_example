@@ -62,8 +62,7 @@ class tree_t {
   }
 
   void print(std::ostream& stream, int level, node_t* node) {
-    if (node == nullptr)
-      return;
+    if (node == nullptr) return;
 
     print(stream, level + 1, node->right);
 
@@ -106,11 +105,11 @@ class tree_t {
     }
   }
   void destroy(node_t* node) {
-    if(node != nullptr){
+    if (node != nullptr) {
       destroy(node->left);
-     destroy(node->right);
+      destroy(node->right);
+      delete node;
     }
-   delete node;
   }
   ~tree_t() { destroy(root_); }
 };
