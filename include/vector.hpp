@@ -1,27 +1,155 @@
 #include <iostream>
 
-class vector_t
+class tree_t
 {
 private:
-	int * elements_;
-	std::size_t size_;
-	std::size_t capacity_;
+    struct node_t
+    {
+        node_t* left = nullptr;
+        node_t* right = nullptr;
+        int value = 0;
+    };
+
+private:
+    node_t* root_;
+
 public:
-	vector_t();
-	vector_t(vector_t const & other);
-	vector_t & operator =(vector_t const & other);
-	~vector_t();
+    tree_t()
+    {
+        root_ = nullptr;
+    }
+    node_t* root()
+    {
+        return root_;
+    }
 
-	std::size_t size() const;
-	std::size_t capacity() const;
+    void check_operator(std::ostream& stream, char op, int value)
+    {
+        switch (op)
+        {
+            case '+':
+            {
+                insert(value);
+                break;
+            }
+            case '?':
+            {
+                if(find(value))
+		{
+			stream << "true";
+		}
+		else stream << "false";
+                break;
+            }
+            case '=':
+            {
+                print(stream, 0, root_);
+                break;
+            }
+            case 'q':
+            {
+                exit(0);
+                break;
+            }
+            default:
+            {
+              stream <<"Error of use operator";
+            }
+        }
+    }
 
-	void push_back(int value);
-	void pop_back();
+    void insert(int value)
+    {
+        node_t* node = new node_t;
+        node->value = value;
+        node->right = nullptr;
+        node->left = nullptr;
+        if (root_ == nullptr)
+        {
+            root_ = node;
+            return;
+        }
 
-	int & operator [](std::size_t index);
-	int operator [](std::size_t index) const;
+        node_t* vetka = root_;
+        while (vetka != nullptr)
+        {
+            if (vetka->value < value)
+            {
+                if (vetka->right != nullptr)
+                {
+                    vetka = vetka->right;
+                }
+                else
+                {
+                    vetka->right = node;
+                    return;
+                }
+            }
+            else if (vetka->value > value)
+            {
+                if (vetka->left != nullptr)
+                {
+                    vetka = vetka->left;
+                }
+                else
+                {
+                    vetka->left = node;
+                    return;
+                }
+            }
+            else
+                return;
+        }
+    }
+    bool find(int value) const
+    {
+        node_t* node = root_;
+        while (node != nullptr)
+        {
+            if (node->value == value)
+            {
+                return true;
+            }
+            else
+            {
+                if (value <= node->value)
+                {
+                    node = node->left;
+                }
+                else
+                    node = node->right;
+            }
+        }
+        return false;
+    }
 
-	bool operator ==(vector_t const & other) const;
+    void print(std::ostream& stream, int level, node_t* node)
+    {
+        if (node == nullptr)
+            return;
+
+        print(stream, level + 1, node->right);
+
+        for (unsigned int i = 0; i < level; i++)
+        {
+            stream << "---";
+        }
+          stream << node->value <<   std::endl;
+
+        print(stream, level + 1, node->left);
+    }
+
+   void destroy(node_t* node)
+   {
+	if (node != nullptr)
+	{
+		destroy(node->left);
+		destroy(node->right);
+		delete node;
+	}
+   }
+	~tree_t()
+	{
+		destroy(root_);	
+	}
 };
-
-bool operator !=(vector_t const & lhs, vector_t const & rhs);

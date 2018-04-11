@@ -3,117 +3,65 @@
 
 #include "vector.hpp"
 
-TEST_CASE("creating vector")
+TEST_CASE("Сreating tree")
 {
-	vector_t vector;
-	REQUIRE( vector.size() == 0 );
-	REQUIRE( vector.capacity() == 0 );
+	tree_t My_tree;
+	REQUIRE( My_tree.root() == nullptr );
 }
 
-TEST_CASE("copying vector")
+TEST_CASE("Add elements in tree")
 {
-	vector_t vector;
-	vector.push_back(1);
-
-	vector_t copy(vector);
-	REQUIRE( copy == vector );
+	tree_t My_tree;
+	My_tree.insert(7);
+	My_tree.insert(3);
+	My_tree.insert(9);
+	My_tree.insert(6);
+	std::ostringstream ostream;
+	My_tree.print(ostream, 0, My_tree.root());
+	std::string output{
+		"---9\n"
+		"7\n"
+		"------6\n"
+		"---3\n"};
+	REQUIRE(output == ostream.str());
 }
 
-TEST_CASE("assigning vector")
+TEST_CASE("Check root tree")
 {
-	vector_t vector1;
-	vector_t vector2;
+	tree_t My_tree;
+  My_tree.insert(7);
+  My_tree.insert(3);
+  My_tree.insert(9); 
 
-	vector1.push_back(1);
-	vector2.push_back(2);
-
-	vector1 = vector2;
-	REQUIRE( vector1 == vector2 );
+  REQUIRE(My_tree.find(9) == true);
+  REQUIRE(My_tree.find(2) == false);
 }
 
-TEST_CASE("equaling vector")
+TEST_CASE("Check operator tree '+' and '=' ")
 {
-	vector_t vector1;
-	vector_t vector2;
-
-	vector1.push_back(1);
-	vector2.push_back(1);
-
-	REQUIRE( vector1 == vector2 );
-
-	vector1.push_back(2);
-	REQUIRE( vector1 != vector2 );
+	tree_t My_tree;
+	std::ostringstream ostream;
+	My_tree.check_operator(ostream, '+', 7);
+	My_tree.check_operator(ostream, '+', 3);
+	My_tree.check_operator(ostream, '+', 9);
+	My_tree.check_operator(ostream, '+', 6);
+	std::string output {
+		"---9\n"
+		"7\n"
+		"------6\n"
+		"---3\n"};
+	My_tree.check_operator (ostream, '=', 0);
+	
+	REQUIRE(output == ostream.str());
 }
-
-TEST_CASE("indexing vector")
+TEST_CASE("Check operator tree '?' ")
 {
-	vector_t vector;
-
-	vector.push_back(1);
-
-	REQUIRE( vector[0] == 1 );
-
-	vector_t const copy(vector);
-	REQUIRE( copy[0] == 1 );
+	tree_t My_tree;
+	My_tree.insert(7);
+	My_tree.insert(3);
+	My_tree.insert(9); 
+	std::ostringstream ostream;
+	My_tree.check_operator (ostream, '?', 3);
+	REQUIRE(ostream.str() == "true");
 }
-
-TEST_CASE("pushing elements")
-{
-	vector_t vector;
-
-	vector.push_back(1);
-	REQUIRE( vector.size() == 1 );
-	REQUIRE( vector.capacity() == 1 );
-
-	vector.push_back(2);
-	REQUIRE( vector.size() == 2 );
-	REQUIRE( vector.capacity() == 2 );
-
-	vector.push_back(3);
-	REQUIRE( vector.size() == 3 );
-	REQUIRE( vector.capacity() == 4 );
-
-	vector.push_back(4);
-	REQUIRE( vector.size() == 4 );
-	REQUIRE( vector.capacity() == 4 );
-
-	vector.push_back(5);
-	REQUIRE( vector.size() == 5 );
-	REQUIRE( vector.capacity() == 8 );
-}
-
-TEST_CASE("poping elements")
-{
-	vector_t vector;
-
-	vector.push_back(1);
-	vector.push_back(2);
-	vector.push_back(3);
-	vector.push_back(4);
-	vector.push_back(5);
-	vector.push_back(6);
-
-	vector.pop_back();
-	REQUIRE( vector.size() == 5 );
-	REQUIRE( vector.capacity() == 8 );
-
-	vector.pop_back();
-	REQUIRE( vector.size() == 4 );
-	REQUIRE( vector.capacity() == 8 );
-
-	vector.pop_back();
-	REQUIRE( vector.size() == 3 );
-	REQUIRE( vector.capacity() == 8 );
-
-	vector.pop_back();
-	REQUIRE( vector.size() == 2 );
-	REQUIRE( vector.capacity() == 4 );
-
-	vector.pop_back();
-	REQUIRE( vector.size() == 1 );
-	REQUIRE( vector.capacity() == 2 );
-
-	vector.pop_back();
-	REQUIRE( vector.size() == 0 );
-	REQUIRE( vector.capacity() == 1 );
-}
+	
