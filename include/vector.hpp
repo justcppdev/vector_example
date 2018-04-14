@@ -127,6 +127,18 @@ class tree_t {
         else q->left = v;
         delete node;
     }
+	bool equally(node_t* first, node_t* second ) const{
+         if( first == nullptr && second == nullptr) return true;
+     
+         else if( first != nullptr && second != nullptr && first->value == second->value){
+             return equally(first->left,second->left) && equally(first->right, second->right);
+         }
+        
+         else return false;
+     }
+     auto operator==(tree_t const & other) const{
+         return(equally(root_,other.root_));
+     }
   void act(char op, int value, std::ostream& stream) {
     switch (op) {
       case '?': {
