@@ -4,12 +4,12 @@
 #include "vector.hpp"
 
 TEST_CASE("creating tree") {
-  tree_t tree1;
+  tree_t<int> tree1;
   REQUIRE(tree1.root() == nullptr);
 }
 
 TEST_CASE("insert") {
-  tree_t tree1;
+  tree_t<int> tree1;
   tree1.insert(5);
   tree1.insert(4);
   tree1.insert(6);
@@ -27,7 +27,7 @@ TEST_CASE("insert") {
 }
 
 TEST_CASE("find") {
-  tree_t tree1;
+  tree_t<int> tree1;
   tree1.insert(5);
   tree1.insert(4);
   tree1.insert(6);
@@ -36,7 +36,7 @@ TEST_CASE("find") {
   REQUIRE(tree1.find(8) == false);
 }
 TEST_CASE("operations") {
-  tree_t tree1;
+  tree_t<int> tree1;
   tree1.act1('+', 5);
   tree1.act1('+', 4);
   tree1.act1('+', 6);
@@ -59,8 +59,8 @@ TEST_CASE("operations") {
 }
 
 TEST_CASE(" delete el"){
- tree_t tree1 {8, 3, 11, 1, 5, 6, 7, 9, 10, 14, 12, 13, 15};
- tree_t tree2 {8, 3, 12, 1, 5, 6, 7, 9, 10, 14, 13, 15};
+ tree_t<int> tree1 {8, 3, 11, 1, 5, 6, 7, 9, 10, 14, 12, 13, 15};
+ tree_t<int> tree2 {8, 3, 12, 1, 5, 6, 7, 9, 10, 14, 13, 15};
  tree1.remove(11);
  REQUIRE( tree1 == tree2);
 } 
