@@ -138,7 +138,7 @@ bool equally(node_t* first, node_t* second ) const{
         else if ( node == q->right) q->right = v;
         else q->left = v;
         delete node;
-   
+        return true;
  }
 	
   void act(char op, T value, std::ostream& stream) {
