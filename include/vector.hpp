@@ -25,7 +25,19 @@ class tree_t {
 		insert(_ptr[i]);
 	}
 }
-
+bool equally(node_t* first, node_t* second ) const{
+         if( first == nullptr && second == nullptr) return true;
+     
+         else if( first != nullptr && second != nullptr && first->value == second->value){
+             return equally(first->left,second->left) && equally(first->right, second->right);
+         }
+        
+         else return false;
+     }
+     auto operator==(tree_t const & other) const{
+         return(equally(root_,other.root()));
+     }
+	
   void insert(T value) {
     node_t* node = new node_t;
     node->value = value;
@@ -129,18 +141,6 @@ class tree_t {
    
  }
 	
-	bool equally(node_t* first, node_t* second ) const{
-         if( first == nullptr && second == nullptr) return true;
-     
-         else if( first != nullptr && second != nullptr && first->value == second->value){
-             return equally(first->left,second->left) && equally(first->right, second->right);
-         }
-        
-         else return false;
-     }
-     auto operator==(tree_t const & other) const{
-         return(equally(root_,other.root()));
-     }
   void act(char op, T value, std::ostream& stream) {
     switch (op) {
       case '?': {
