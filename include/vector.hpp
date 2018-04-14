@@ -15,7 +15,14 @@ class tree_t {
   tree_t() { root_ = nullptr; }
 
   node_t* root() const { return root_; }
- 
+ bool isEmpty()
+	{
+		if(root_==nullptr)
+		{
+			return true;
+		}
+	return false;
+	}
  tree_t(std::initializer_list<T> keys)
 {
 	int n = keys.size();
