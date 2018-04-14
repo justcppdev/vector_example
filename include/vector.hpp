@@ -126,7 +126,9 @@ class tree_t {
         else if ( node == q->right) q->right = v;
         else q->left = v;
         delete node;
-    }
+   
+ }
+	
 	bool equally(node_t* first, node_t* second ) const{
          if( first == nullptr && second == nullptr) return true;
      
