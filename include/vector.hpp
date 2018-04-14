@@ -14,7 +14,7 @@ class tree_t {
  public:
   tree_t() { root_ = nullptr; }
 
-  node_t* root() { return root_; }
+  node_t* root() const { return root_; }
  
  tree_t(std::initializer_list<T> keys)
 {
