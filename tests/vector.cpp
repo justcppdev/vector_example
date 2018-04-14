@@ -57,3 +57,10 @@ TEST_CASE("operations") {
   tree1.act('=', 0, stream2);
   REQUIRE(stream2.str() == out);
 }
+
+TEST_CASE(" delete el"){
+ tree_t tree1 {8, 3, 11, 1, 5, 6, 7, 9, 10, 14, 12, 13, 15};
+ tree_t tree2 {8, 3, 12, 1, 5, 6, 7, 9, 10, 14, 13, 15};
+ REQUIRE(tree1.remove(11));
+ REQUIRE( tree1 == tree2);
+} 
