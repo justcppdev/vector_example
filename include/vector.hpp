@@ -15,6 +15,16 @@ class tree_t {
   tree_t() { root_ = nullptr; }
 
   node_t* root() { return root_; }
+ 
+ tree_t(std::initializer_list<int> keys)
+{
+	int n = keys.size();
+	const int* _ptr = keys.begin();
+	for (int i=0; i < n; i++)
+	{
+		insert(_ptr[i]);
+	}
+}
 
   void insert(int value) {
     node_t* node = new node_t;
