@@ -137,7 +137,7 @@ class tree_t {
          else return false;
      }
      auto operator==(tree_t const & other) const{
-         return(equally(root_,other.root_()));
+         return(equally(root_,other.root()));
      }
   void act(char op, int value, std::ostream& stream) {
     switch (op) {
