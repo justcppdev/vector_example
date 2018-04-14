@@ -73,6 +73,50 @@ class tree_t {
 
     print(stream, level + 1, node->left);
   }
+ bool remove(int value) {
+        if (!find(value))
+            return false;
+        node_t* node = root_;
+        node_t* q = nullptr; // родитель элемента, которого нам нужно удалить
+        while( (node!=nullptr) && (node->value!=value)) {
+            q = node;
+            if(value < node->value) node=node->left;
+            else node=node->right;
+
+        }
+        node_t* v; // установить в сортировочном виде дерева.
+        
+        if (node->left==nullptr)  v = node->right;
+        else if ( node->right==nullptr)  v = node->left;
+        
+        else  {
+            node_t* s;
+            node_t* t;
+            t= node;
+            v=node->right;
+            s=v->left;
+            while(s != nullptr){
+                t=v;
+                v= s;
+                s =  v->left;
+            }
+           if(t !=node){
+               t->left = v->right;
+               v->left = node->left;
+               v->right = node->right;
+           }
+           else {
+               v->left = node->left;
+               
+           }
+    }
+        if(q == nullptr){
+            root_ = v;
+        }
+        else if ( node == q->right) q->right = v;
+        else q->left = v;
+        delete node;
+    }
   void act(char op, int value, std::ostream& stream) {
     switch (op) {
       case '?': {
