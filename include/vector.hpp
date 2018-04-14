@@ -1,11 +1,11 @@
 #include <iostream>
-
+template <typename T>
 class tree_t {
  private:
   struct node_t {
     node_t* left;
     node_t* right;
-    int value;
+    T value;
   };
 
  private:
@@ -16,7 +16,7 @@ class tree_t {
 
   node_t* root() { return root_; }
  
- tree_t(std::initializer_list<int> keys)
+ tree_t(std::initializer_list<T> keys)
 {
 	int n = keys.size();
 	const int* _ptr = keys.begin();
@@ -26,7 +26,7 @@ class tree_t {
 	}
 }
 
-  void insert(int value) {
+  void insert(T value) {
     node_t* node = new node_t;
     node->value = value;
     node->right = nullptr;
@@ -56,7 +56,7 @@ class tree_t {
         return;
     }
   }
-  bool find(int value) const {
+  bool find(T value) const {
     node_t* node = root_;
     while (node != nullptr) {
       if (node->value == value) {
@@ -83,7 +83,7 @@ class tree_t {
 
     print(stream, level + 1, node->left);
   }
- bool remove(int value) {
+ bool remove(T value) {
         if (!find(value))
             return false;
         node_t* node = root_;
@@ -139,7 +139,7 @@ class tree_t {
      auto operator==(tree_t const & other) const{
          return(equally(root_,other.root()));
      }
-  void act(char op, int value, std::ostream& stream) {
+  void act(char op, T value, std::ostream& stream) {
     switch (op) {
       case '?': {
         if (find(value)) {
@@ -157,7 +157,7 @@ class tree_t {
     }
   }
 
-  void act1(char op, int value) {
+  void act1(char op, T value) {
     switch (op) {
       case '+': {
         insert(value);
