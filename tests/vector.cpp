@@ -67,8 +67,8 @@ TEST_CASE(" delete el"){
 
 TEST_CASE(" initializer_list ")
 {
-	std::initializer_list <int> c1{ 5, 4, 6 };
-	tree_t<int> tree1(list);
+	
+	tree_t<int> tree1 { 5, 4, 6 };
 	std::ostringstream stream;
 	tree.print1(stream, 0, tree1.root());
 	 std::string out{
