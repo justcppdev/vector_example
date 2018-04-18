@@ -70,7 +70,7 @@ TEST_CASE(" initializer_list ")
 	
 	tree_t<int> tree1 { 5, 4, 6 };
 	std::ostringstream stream;
-	tree1.print1(stream, 0, tree1.root());
+	tree1.print(stream, 0, tree1.root());
 	 std::string out{
       "---6\n"
       "5\n"
