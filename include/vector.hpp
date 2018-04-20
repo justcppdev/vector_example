@@ -130,9 +130,13 @@ public:
         auto removed_node = pair.first;
         auto removed_node_parent = pair.second;
 
-        if (!removed_node->left && !removed_node->right) {
-            if(removed_node == removed_node_parent->right) removed_node_parent->right = nullptr;
-            if(removed_node == removed_node_parent->left) removed_node_parent->left = nullptr;
+        if (!removed_node->left && !removed_node->right ) {
+           if(removed_node_parent) {
+               if (removed_node == removed_node_parent->right) removed_node_parent->right = nullptr;
+               if (removed_node == removed_node_parent->left) removed_node_parent->left = nullptr;
+           }
+           else root_ = nullptr;
+
         } else if (removed_node->left && !removed_node->right) {
             transplant(removed_node->left, removed_node_parent, false);
         } else if (removed_node->right && !removed_node->left) {
@@ -152,7 +156,8 @@ public:
         }
 
         delete removed_node;
-        return true;
+	 return true;
+
     }
 
     std::pair<node_t*, node_t*> find_(T value) {
