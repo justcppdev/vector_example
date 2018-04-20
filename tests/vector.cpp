@@ -46,8 +46,6 @@ TEST_CASE("operations") {
       "5\n"
       "---4\n"};
   std::ostringstream stream;
-  std::ostringstream stream1;
-  std::ostringstream stream2;
 
   tree1.act( 5, '?');
   REQUIRE("true" == "true");
@@ -55,8 +53,8 @@ TEST_CASE("operations") {
   tree1.act( 3, '?');
   REQUIRE("false" == "false");
 
-  tree1.operation(stream2, 0, '=');
-  REQUIRE(stream2.str() == out);
+  tree1.operation(stream2, '=',0);
+  REQUIRE(stream.str() == out);
 }
 
 TEST_CASE(" tree1 == tree2"){
