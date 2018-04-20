@@ -106,6 +106,10 @@ public:
                   insert(value);
                   break;
               }
+              case '?':{
+                  finde(value);
+                  break;
+              }
           }
     }
     
