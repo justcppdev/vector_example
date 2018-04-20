@@ -1,6 +1,7 @@
 #include <catch.hpp>
 #include <sstream>
 
+
 #include "vector.hpp"
 
 TEST_CASE("creating tree") {
@@ -37,9 +38,9 @@ TEST_CASE("find") {
 }
 TEST_CASE("operations") {
   tree_t<int> tree1;
-  tree1.operation('+', 5);
-  tree1.operation('+', 4);
-  tree1.operation('+', 6);
+  tree1.act('+', 5);
+  tree1.act('+', 4);
+  tree1.act('+', 6);
   std::string out{
       "---6\n"
       "5\n"
