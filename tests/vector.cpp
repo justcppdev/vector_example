@@ -111,7 +111,7 @@ TEST_CASE("BST delete root with one child", "[delete]")
 
 TEST_CASE("BST delete root with children", "[delete]")
 {
-	std::initializer_list <int> list_1{8, 4, 3, 10, 9, 13, 11, 12}, list_2{9, 4, 3, 10, 13, 11, 12};
+
 	tree_t<int> tree1 {8, 4, 3, 10, 9, 13, 11, 12};
 	tree_t<int> tree2 {9, 4, 3, 10, 13, 11, 12};
     	REQUIRE( tree1.remove(8));
@@ -120,7 +120,7 @@ TEST_CASE("BST delete root with children", "[delete]")
 
 TEST_CASE("BST delete non root without children", "[delete]")
 {
-	std::initializer_list <int> list_1{8, 4, 3, 10, 9, 13, 11, 12}, list_2{8, 4, 10, 9, 13, 11, 12};
+	
 	tree_t<int> tree1 {8, 4, 3, 10, 9, 13, 11, 12};
 	tree_t<int> tree2 {8, 4, 10, 9, 13, 11, 12};
     	REQUIRE( tree1.remove(3));
