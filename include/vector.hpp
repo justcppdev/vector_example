@@ -99,6 +99,14 @@ public:
             default: { cout << "invalid operation"; }
         }
     }
+    void act(char op, int value){
+          switch (op){
+              case '+':{
+                  insert(value);
+                  break;
+              }
+          }
+    }
     bool remove(T value) {
         auto pair = find_(value);
         if (!pair.first) {
