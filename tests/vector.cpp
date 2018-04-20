@@ -59,7 +59,7 @@ TEST_CASE("operations") {
   REQUIRE(stream2.str() == out);
 }
 
-TEST_CASE(" delete el"){
+TEST_CASE(" tree1 == tree2"){
  tree_t<int> tree1 {8, 3, 11, 12, 1, 5, 6, 7, 9, 10, 14, 13, 15};
  tree_t<int> tree2 {8, 3, 11, 12, 1, 5, 6, 7, 9, 10, 14, 13};
  tree1.remove(15);
@@ -77,4 +77,10 @@ TEST_CASE(" initializer_list ")
       "5\n"
       "---4\n"};
 	REQUIRE(out == stream.str());
+}
+TEST_CASE(" tree1 = tree2")
+{	
+	tree_t<int> tree1 {3,4,5};
+	tree_t<int> tree2 {3,4,6};
+	REQUIRE(!(tree1 == tree2));
 }
