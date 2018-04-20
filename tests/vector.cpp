@@ -46,14 +46,15 @@ TEST_CASE("operations") {
       "5\n"
       "---4\n"};
   std::ostringstream stream;
+std::ostringstream stream1;
+	std::ostringstream stream2;
+  tree1.operation(stream1, 5, '?');
+  REQUIRE(stream1.str() == "true");
 
-  tree1.act( 5, '?');
-  REQUIRE("true" == "true");
+  tree1.operation(stream2, 3, '?');
+  REQUIRE(stream2.str() == "false");
 
-  tree1.act( 3, '?');
-  REQUIRE("false" == "false");
-
-  tree1.operation(stream2, '=',0);
+  tree1.operation(stream, '=',0);
   REQUIRE(stream.str() == out);
 }
 
