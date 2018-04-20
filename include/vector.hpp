@@ -108,6 +108,7 @@ public:
               }
           }
     }
+    
     bool remove(T value) {
         auto pair = find_(value);
         if (!pair.first) {
@@ -139,7 +140,7 @@ public:
         }
 
         delete removed_node;
-
+        return true;
     }
 
     std::pair<node_t*, node_t*> find_(T value) {
