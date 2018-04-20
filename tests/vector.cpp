@@ -37,9 +37,9 @@ TEST_CASE("find") {
 }
 TEST_CASE("operations") {
   tree_t<int> tree1;
-  tree1.act1('+', 5);
-  tree1.act1('+', 4);
-  tree1.act1('+', 6);
+  tree1.operation('+', 5);
+  tree1.operation('+', 4);
+  tree1.operation('+', 6);
   std::string out{
       "---6\n"
       "5\n"
@@ -48,20 +48,20 @@ TEST_CASE("operations") {
   std::ostringstream stream1;
   std::ostringstream stream2;
 
-  tree1.act('?', 5, stream);
+  tree1.operation(stream, 5, '?');
   REQUIRE(stream.str() == "true");
 
-  tree1.act('?', 3, stream1);
+  tree1.operation(stream1, 3, '?');
   REQUIRE(stream1.str() == "false");
 
-  tree1.act('=', 0, stream2);
+  tree1.operation(stream2, 0, '=');
   REQUIRE(stream2.str() == out);
 }
 
 TEST_CASE(" delete el"){
  tree_t<int> tree1 {8, 3, 11, 12, 1, 5, 6, 7, 9, 10, 14, 13, 15};
- tree_t<int> tree2 {8, 3, 11, 12, 1, 5, 6, 7, 9, 10, 14, 13, 15};
- tree1.remove(11);
+ tree_t<int> tree2 {8, 3, 11, 12, 1, 5, 6, 7, 9, 10, 14, 13};
+ tree1.remove(15);
  REQUIRE( tree1 == tree2);
 } 
 
