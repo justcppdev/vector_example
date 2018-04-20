@@ -22,6 +22,14 @@ public:
             insert(key);
         }
     }
+    bool isEmpty()
+	{
+		if(root_==nullptr)
+		{
+			return true;
+		}
+	return false;
+}
     void insert(T value) {
         node_t* node = new node_t;
         node->value = value;
