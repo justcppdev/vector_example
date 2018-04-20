@@ -48,10 +48,10 @@ TEST_CASE("operations") {
   std::ostringstream stream;
 std::ostringstream stream1;
 	std::ostringstream stream2;
-  tree1.operation(stream1, 5, '?');
+  tree1.operation(stream1, '?', 5);
   REQUIRE(stream1.str() == "true");
 
-  tree1.operation(stream2, 3, '?');
+  tree1.operation(stream2, '?',3);
   REQUIRE(stream2.str() == "false");
 
   tree1.operation(stream, '=',0);
