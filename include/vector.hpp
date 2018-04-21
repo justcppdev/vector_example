@@ -135,9 +135,9 @@ public:
         auto removed_node_parent = pair.second;
         if (!removed_node->left && !removed_node->right ) {
             transplant(nullptr, removed_node, removed_node_parent);
-        } else if (removed_node->left && !removed_node->right) {
+        } else if (removed_node->left) {
             transplant(removed_node->left, removed_node, removed_node_parent);
-        } else if (removed_node->right && !removed_node->left) {
+        } else if (removed_node->right) {
             transplant(removed_node->right, removed_node, removed_node_parent);
         }
         else {
