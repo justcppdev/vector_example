@@ -133,30 +133,20 @@ public:
 
         auto removed_node = pair.first;
         auto removed_node_parent = pair.second;
-
         if (!removed_node->left && !removed_node->right ) {
-           if(removed_node_parent) {
-               if (removed_node == removed_node_parent->right) removed_node_parent->right = nullptr;
-               if (removed_node == removed_node_parent->left) removed_node_parent->left = nullptr;
-           }
-           else root_ = nullptr;
-
+            transplant(nullptr, removed_node, removed_node_parent);
         } else if (removed_node->left && !removed_node->right) {
-            transplant(removed_node->left, removed_node_parent, false);
+            transplant(removed_node->left, removed_node, removed_node_parent);
         } else if (removed_node->right && !removed_node->left) {
-            transplant(removed_node->right, removed_node_parent, false);
+            transplant(removed_node->right, removed_node, removed_node_parent);
         }
-
-        else {  //когда есть два сына у удаляемого элемента
+        else {
             auto pair = min_(removed_node->right, removed_node);
             auto leftest_node = pair.first;
             auto leftest_node_parent = pair.second;
 
-            transplant(leftest_node->right, leftest_node_parent, false);
-            if(leftest_node == leftest_node_parent->right) leftest_node_parent->right = nullptr;
-            if(leftest_node == leftest_node_parent->left) leftest_node_parent->left = nullptr;
-            transplant(leftest_node, removed_node_parent, true);
-
+            transplant(leftest_node->right, leftest_node, leftest_node_parent);
+            transplant(leftest_node, removed_node, removed_node_parent);
         }
 
         delete removed_node;
@@ -184,32 +174,32 @@ public:
             node = node->left;
         }
         return {node, parent};
-    };
-    void transplant(node_t* node, node_t* parent, bool move_children) {
-        if (!node) {
-            return;
-        }
-        node_t* child = nullptr;
-        if (parent == nullptr) {
-            node->left = root_->left;
-            node->right = root_->right;
-            root_ = node;
-
-        } else {
-            if (parent->value < node->value) {
-                child = parent->right;
-                parent->right = node;
-            } else {
-                child = parent->left;
+    }
+    
+    void transplant( node_t * node, node_t * child, node_t * parent )
+    {
+        if( parent ) {
+            if( parent->left == child ) {
                 parent->left = node;
             }
-
-            if (move_children && child) {
-                 node->left = child->left;
-                 node->right = child->right;
-                child->left = nullptr;
-                child->right = nullptr;
+            else {
+                parent->right = node;
             }
+        }
+        else {
+            root_ = node;
+        }
+        
+        if( child ) {
+            if( child->left != node ) {
+                node->left = child->left;
+            }
+            if( child->right != node ) {
+                node->right = child->right;
+            }
+            
+            child->left = nullptr;
+            child->right = nullptr;
         }
     }
     void destroy(node_t* node) {
